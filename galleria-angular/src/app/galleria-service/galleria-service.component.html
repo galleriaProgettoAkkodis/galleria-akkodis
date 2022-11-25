@@ -1,7 +1,7 @@
 <div *ngIf="showLista"> 
 <table>
 <tr>Lista Gallerie</tr>
-    <tr *ngFor="let galleria of listaGallerie">{{galleria}} <button>Editing galleria</button><button>Visualizza Galleria</button></tr>
+    <tr *ngFor="let galleria of listaGallerie">{{galleria}} <button>Editing galleria</button><button (click)="visualizzaGalleria()">Visualizza Galleria</button></tr>
 </table>
 <button (click)="showFormGalleria()">Crea galleria</button>
 </div>
@@ -16,4 +16,11 @@
         </p>
         <button type="submit" [disabled]="!myForm.valid">Aggiungi</button>
     </form>
+</div>
+
+<div *ngIf="visualizzaGalleriaBool" class="visualizza-galleria">
+    <h2>Nome Galleria</h2>
+    <table>
+        <tr *ngFor="let immagine of listaImmagini">{{immagine}} <button>Editing galleria</button><button>Visualizza Galleria</button></tr>
+    </table>
 </div>

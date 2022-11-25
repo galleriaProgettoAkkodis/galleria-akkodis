@@ -16,9 +16,10 @@ import {Injectable} from '@angular/core';
   styleUrls: ['./galleria-service.component.css']
 })
 export class GalleriaServiceComponent implements OnInit{
-
+  listaImmagini:string[] = [];
   listaGallerie:string[] = [];
   formAddGalleria!:boolean;
+  visualizzaGalleriaBool:boolean = false;
   nomeGalleria!:string;
   showLista!:boolean;
   constructor(private http: HttpClient){}
@@ -38,6 +39,15 @@ export class GalleriaServiceComponent implements OnInit{
     );
   }
 
+  getListaImmagini() {
+    this.http.get('http://localhost:8080/image/api').subscribe(
+      (data:any)=>{
+        this.listaGallerie = data as string[];
+        console.log(this.listaGallerie);
+      }
+    )
+  }
+
 
   addGalleria(){
     this.http.post('http://localhost:8080/gallery/api', this.nomeGalleria).subscribe(()=> this.getListaGallerie());
@@ -46,5 +56,9 @@ export class GalleriaServiceComponent implements OnInit{
   showFormGalleria(){
     this.formAddGalleria = true;
     this.showLista = false;
+  }
+
+  visualizzaGalleria() {
+    this.visualizzaGalleriaBool = !this.visualizzaGalleriaBool;
   }
 }
