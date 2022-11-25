@@ -18,6 +18,8 @@ import {Injectable} from '@angular/core';
 export class GalleriaServiceComponent implements OnInit{
 
   listaGallerie:string[] = [];
+  formAddGalleria!:boolean;
+  nomeGalleria!:string;
   constructor(private http: HttpClient){}
 
 
@@ -32,5 +34,14 @@ export class GalleriaServiceComponent implements OnInit{
         console.log(this.listaGallerie);
       }
     );
+  }
+
+
+  addGalleria(){
+    this.http.post('http://localhost:8080/gallery/api', this.nomeGalleria).subscribe(()=> this.getListaGallerie());
+  }
+
+  showFormGalleria(){
+    this.formAddGalleria = true;
   }
 }

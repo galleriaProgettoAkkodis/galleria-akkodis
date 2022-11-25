@@ -8,4 +8,7 @@ export class Galleria {
     getTitolo():string {
         return this.titolo;
     }
+    setTitolo(titolo:string) {
+        this.titolo = titolo;
+    }
 }

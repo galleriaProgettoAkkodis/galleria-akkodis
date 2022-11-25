@@ -1,1 +1,16 @@
-<p>galleria-service works!</p>
+<table>
+<tr>Lista Gallerie</tr>
+    <tr *ngFor="let galleria of listaGallerie">{{galleria}}<button>Editing galleria</button><button>Visualizza Galleria</button></tr>
+</table>
+
+<button (click)="showFormGalleria()">Crea galleria</button>
+
+<div *ngIf="formAddGalleria">
+    <form #myForm="ngForm" (ngSubmit)="addGalleria()">
+        <p>
+            <label>Nome galleria</label>
+            <input type = "text" [(ngModel)] ="nomeGalleria" name = "nomeGalleria" required>
+        </p>
+        <button type="submit" [disabled]="!myForm.valid">Aggiungi</button>
+    </form>
+</div>
