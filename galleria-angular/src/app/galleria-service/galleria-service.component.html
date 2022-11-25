@@ -1,7 +1,11 @@
 <div *ngIf="showLista"> 
 <table>
 <tr>Lista Gallerie</tr>
-    <tr *ngFor="let galleria of listaGallerie">{{galleria}} <button>Editing galleria</button><button>Visualizza Galleria</button></tr>
+    <tr *ngFor="let galleria of listaGallerie">{{galleria}} <button (click)="showEditingGalleria()">Editing galleria</button>
+        <div *ngIf="editingGalleria">
+            <div *ngFor="let immaginiRandom of mapImmaginiRandom.values()"> <img src ={{immaginiRandom}}><button (click)="modificaGalleria(galleria, immaginiRandom)">Aggiungi alla galleria</button></div>
+            </div><button>Visualizza Galleria</button></tr>
+    
 </table>
 <button (click)="showFormGalleria()">Crea galleria</button>
 </div>
