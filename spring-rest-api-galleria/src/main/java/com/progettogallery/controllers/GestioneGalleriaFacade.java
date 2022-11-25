@@ -30,7 +30,7 @@ public class GestioneGalleriaFacade {
 		Galleria gallery = galleria.findByTitolo(insImg.getTitoloGalleria());
 		img.setGalleria(gallery);
 		img.setTitolo(insImg.getTitoloImg());
-		img.setUrl("aaaa");
+		img.setUrl(insImg.getUrlImg());
 		immagine.save(img);
 		return new ResponseEntity<>(img, HttpStatus.CREATED);
 	}
