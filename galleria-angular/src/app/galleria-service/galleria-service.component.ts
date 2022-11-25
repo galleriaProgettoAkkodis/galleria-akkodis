@@ -20,10 +20,12 @@ export class GalleriaServiceComponent implements OnInit{
   listaGallerie:string[] = [];
   formAddGalleria!:boolean;
   nomeGalleria!:string;
+  showLista!:boolean;
   constructor(private http: HttpClient){}
 
 
   ngOnInit(){
+    this.showLista = true;
     this.getListaGallerie();
   }
 
@@ -43,5 +45,6 @@ export class GalleriaServiceComponent implements OnInit{
 
   showFormGalleria(){
     this.formAddGalleria = true;
+    this.showLista = false;
   }
 }
