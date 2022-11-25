@@ -24,6 +24,9 @@ export class GalleriaServiceComponent implements OnInit{
   showLista!:boolean;
   editingGalleria!:boolean;
   mapImmaginiRandom = new Map<string, string>;
+  mapImmaginiRandom2 = new Map<string, string>;
+  galleriaDaMostrare !: string;
+  nomeImg!:number;
   constructor(private http: HttpClient){}
 
 
@@ -32,12 +35,18 @@ export class GalleriaServiceComponent implements OnInit{
       this.mapImmaginiRandom.set("img"+i, "https://picsum.photos/id/1/200/300");
     }
   }
+  fillMapImmaginiRandom2(){
+    for (let i = 0; i<10;i++) {
+      this.mapImmaginiRandom2.set("img"+i, "https://picsum.photos/id/237/200/300");
+    }
+  }
 
   ngOnInit(){
     this.showLista = true;
     this.editingGalleria = false;
     this.fillMapImmaginiRandom();
     this.getListaGallerie();
+    this.fillMapImmaginiRandom2();
   }
 
   getListaGallerie(){
@@ -57,7 +66,17 @@ export class GalleriaServiceComponent implements OnInit{
       }
     )
   }
-  
+  showEditingGalleria(){
+    this.editingGalleria = true;
+  }
+
+  modificaGalleria(galleria: string, url:string){
+    this.showLista = false;
+    let imgAggiunta = new InsertImage("nomeImg",galleria, url);
+    console.log(imgAggiunta);
+    this.nomeImg++;
+    this.http.post('http://localhost:8080/gallery/api/add', imgAggiunta).subscribe(()=> this.getListaGallerie());
+  }
   addGalleria(){
     this.http.post('http://localhost:8080/gallery/api', this.nomeGalleria).subscribe(()=> this.getListaGallerie());
   }
@@ -67,7 +86,10 @@ export class GalleriaServiceComponent implements OnInit{
     this.showLista = false;
   }
 
-  visualizzaGalleria() {
+  visualizzaGalleria(gallery : string) {
     this.visualizzaGalleriaBool = !this.visualizzaGalleriaBool;
+    this.galleriaDaMostrare = gallery;
+    this.editingGalleria = false;
+    this.showLista = false;
   }
 }

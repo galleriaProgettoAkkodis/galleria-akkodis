@@ -15,7 +15,7 @@ import com.progettogallery.services.GalleriaService;
 import com.progettogallery.services.ImmagineService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class GestioneGalleriaFacade {
 
 	@Autowired
@@ -31,6 +31,7 @@ public class GestioneGalleriaFacade {
 		img.setGalleria(gallery);
 		img.setTitolo(insImg.getTitoloImg());
 		img.setUrl(insImg.getUrlImg());
+		System.out.println(img);
 		immagine.save(img);
 		return new ResponseEntity<>(img, HttpStatus.CREATED);
 	}
