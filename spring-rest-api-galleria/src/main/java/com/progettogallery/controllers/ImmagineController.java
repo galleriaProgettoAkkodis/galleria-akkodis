@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.progettogallery.entities.Immagine;
+import com.progettogallery.services.ImmagineService;
 
 @RestController
 @CrossOrigin
@@ -24,14 +25,11 @@ public class ImmagineController {
 	private ImmagineService immagineService;
 	
 	
+	/*Restituisce la lista di tutte le immagini dal db*/
 	@GetMapping("/api")
 	public ResponseEntity<List<Immagine>> getListaImmagini(){
-		List<Immagine> listaImmagini = immagineService.findAll();
+		List<Immagine> listaImmagini = immagineService.listImages();
 		return new ResponseEntity<>(listaImmagini, HttpStatus.OK);
 	}
 
-//	@PostMapping("/api/add")
-//	public ResponseEntity <Immagine> addImmagine(@RequestBody Immagine img) {
-//		
-//	}
 }

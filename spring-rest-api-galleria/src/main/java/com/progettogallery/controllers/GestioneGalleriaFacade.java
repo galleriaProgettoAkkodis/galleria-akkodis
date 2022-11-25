@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.progettogallery.dto.InsertImage;
+import com.progettogallery.entities.Galleria;
 import com.progettogallery.entities.Immagine;
+import com.progettogallery.services.GalleriaService;
+import com.progettogallery.services.ImmagineService;
 
 @RestController
 @CrossOrigin
@@ -24,9 +27,11 @@ public class GestioneGalleriaFacade {
 	@PostMapping("gallery/api/add")
 	public ResponseEntity <Immagine> addImmagine(@RequestBody InsertImage insImg) {
 		Immagine img = new Immagine();
-		Galleria gallery = new Galleria();
-		gallery.setTitolo(insImg.getTitoloGalleria());
+		Galleria gallery = galleria.findByTitolo(insImg.getTitoloGalleria());
+		img.setGalleria(gallery);
 		img.setTitolo(insImg.getTitoloImg());
+		img.setUrl("aaaa");
+		immagine.save(img);
 		return new ResponseEntity<>(img, HttpStatus.CREATED);
 	}
 }

@@ -1,7 +1,21 @@
 package com.progettogallery;
 
+import java.time.LocalDateTime;
+
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.progettoFinale.entities.Ascolto;
+import com.progettoFinale.entities.BranoMusicale;
+import com.progettoFinale.services.AscoltoService;
+import com.progettoFinale.services.BranoMusicaleService;
+import com.progettoFinale.services.GestioneServiceFacadeImpl;
+import com.progettogallery.entities.Galleria;
+import com.progettogallery.entities.Immagine;
+import com.progettogallery.services.GalleriaService;
+import com.progettogallery.services.ImmagineService;
 
 @SpringBootApplication
 public class SpringRestApiGalleriaApplication {
@@ -10,4 +24,23 @@ public class SpringRestApiGalleriaApplication {
 		SpringApplication.run(SpringRestApiGalleriaApplication.class, args);
 	}
 
+	@Bean
+	public CommandLineRunner runner(ImmagineService imgS, GalleriaService gallS) {
+		return new CommandLineRunner() {
+
+			@Override
+			public void run(String... args) throws Exception {
+				Immagine i = new Immagine();
+				i.setTitolo("opera d'arte");
+				i.setUrl("aaaaa");
+				Galleria g = new Galleria();
+				g.setTitolo("museo aa");
+				i.setGalleria(g);
+				gallS.save(g);
+				imgS.save(i);
+				
+			}
+		};
+	}
+	
 }
