@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --primary: #011e31;
+    --secondary: #f8f6f9;
+    --tertiary: #c48b7a;
+    --text-primary: white;
+    --text-secondary: rgb(86, 86, 86);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Merienda', cursive;
+}

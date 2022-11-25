@@ -5,11 +5,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GalleriaServiceComponent } from './galleria-service/galleria-service.component';
+import { HeaderComponent } from './header/header.component';
+import { ImmaginiComponent } from './immagini/immagini.component';
+import { NomeSitoComponent } from './nome-sito/nome-sito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleriaServiceComponent
+    GalleriaServiceComponent,
+    HeaderComponent,
+    ImmaginiComponent,
+    NomeSitoComponent
   ],
   imports: [
     BrowserModule,
