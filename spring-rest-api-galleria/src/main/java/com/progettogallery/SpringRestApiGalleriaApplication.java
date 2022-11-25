@@ -7,11 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.progettoFinale.entities.Ascolto;
-import com.progettoFinale.entities.BranoMusicale;
-import com.progettoFinale.services.AscoltoService;
-import com.progettoFinale.services.BranoMusicaleService;
-import com.progettoFinale.services.GestioneServiceFacadeImpl;
 import com.progettogallery.entities.Galleria;
 import com.progettogallery.entities.Immagine;
 import com.progettogallery.services.GalleriaService;
