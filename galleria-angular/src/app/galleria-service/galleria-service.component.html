@@ -1,12 +1,16 @@
+<table>
+<tr>Lista Gallerie</tr>
+    <tr *ngFor="let galleria of listaGallerie">{{galleria}}<button>Editing galleria</button><button>Visualizza Galleria</button></tr>
+</table>
 
+<button (click)="showFormGalleria()">Crea galleria</button>
 
-<!-- 
-    <div class="visualizza-galleria">
-        <div class="nome-galleria">
-            <h3>Nome</h3>
-        </div>
-        <div class="immagini">
-            <app-immagini>image</app-immagini>
-        </div>
-    </div>
--->
+<div *ngIf="formAddGalleria">
+    <form #myForm="ngForm" (ngSubmit)="addGalleria()">
+        <p>
+            <label>Nome galleria</label>
+            <input type = "text" [(ngModel)] ="nomeGalleria" name = "nomeGalleria" required>
+        </p>
+        <button type="submit" [disabled]="!myForm.valid">Aggiungi</button>
+    </form>
+</div>
